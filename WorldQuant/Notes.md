@@ -48,7 +48,7 @@ Fama-French Model:  R it - R riskfreereturn = a it + b1 * R marketpremium + b2 *
 
 ## Basic Statistics for Data Analysis
 Moments = mathematical indicators that represent various characteristics of data distribution<br>
-!(WorldQuant/2. Ist Moment (Mean).png)
+![](WorldQuant/2. Ist Moment (Mean).png)<br> 
 Variance = np.var(data)<br>
 ->measures how spread out data values are from the mean<br>
 Standard Deviation = np.std(data)<br>
