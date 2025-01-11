@@ -48,7 +48,6 @@ Fama-French Model:  R it - R riskfreereturn = a it + b1 * R marketpremium + b2 *
 
 ## Basic Statistics for Data Analysis
 Moments = mathematical indicators that represent various characteristics of data distribution<br>
-![](WorldQuant/2. Ist Moment (Mean).png)<br> 
 Variance = np.var(data)<br>
 ->measures how spread out data values are from the mean<br>
 Standard Deviation = np.std(data)<br>
@@ -108,13 +107,10 @@ Major Statistical Testing Methods<br>
 Objectives: balance between risk and return, maximize diversification effects, tailored asset allocation for investment goals<br>
 1) **Markowitz Mean-Variance Optimization**<br>
 -> optimizes the trade-off between risk and return and provides optimal asset allocation through the efficient frontier<br>
-!(WorldQuant/Key Concepts.png)
 2) **Black-Litterman Model**<br>
 -> integrates market equilibrium and investor beliefs for realistic portfolio construction<br>
-!(WorldQuant/given return level.png)
 3) **Risk Parity**<br>
 -> asset allocation strategy designed to equalize the contribution of each asset to the overall portfolio risk: lowering weights of volatile assets while increasing weights of less volatile assets to enhance stability<br>
-!(WorldQuant/Key Concepts.png)
 
 ## Outlier Detection in Financial Time Series Data
 Why need detect? degraded model performace, errors in risk management, distorted analytical resulty<br>
