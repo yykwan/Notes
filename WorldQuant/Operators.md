@@ -1,5 +1,5 @@
-#Operators
-##Arithmetic
+# Operators
+## Arithmetic
 1) abs(x) -> absolute value of x<br>
 2) add(x,y,filter-false), x+y -> add all inputs, if filter=true -> filter all NaN=0 beforehand<br>
 3) densify(x) -> converts grouping field of many buckets into lesser number of only available buckets -> higher efficiency<br>
@@ -14,7 +14,7 @@
 12) sign(x) -> if input = NaN ; return NaN<br>
 13) signed_power(x,y) -> sign(x)*(abs(x)^y)<br>
 14) subtract(x,y,filter=false) , x-y -> if filter=true -> filter all input NaN to 0 before subtract<br>
-##Logical
+## Logical
 1) and(input1,input2)<br>
 2) if_else(input1, input2,input3)<br>
 3) input1 <= input2<br>
@@ -25,7 +25,7 @@
 8) is_nan(input) -> if (input==NaN) return 1 else return 0 <br>
 9) not(x)<br>
 10) or(input1,input2)<br>
-##Time Series
+## Time Series
 1) days_from_last_change(x) -> amount of days since last change of x<br>
 2) hump(x, hump = 0.01) -> limits amount and magnitude of changes in input -> reduces turnover<br>
 3) inst_tvr(x,d) -> Total trading value/Total holdng value in past d days<br>
@@ -51,7 +51,7 @@
 22) ts_corr(x,y,d) -> returns correlation of x and y for past d days<br>
 23) ts_count_nans(x,d) -> returns the number of NaN values in x for past d days<br>
 24) ts_covariance(y,x,d) -> returns covariance of y and x for the past d days<br>
-##Cross Sectional 
+## Cross Sectional 
 1) normalize(x,useStd=false,limit=0.0) -> calculates mean value of all valid alpha values for a certain date, then subtracts mean from each element<br>
 2)quantile(x,driver=gaussian,sigma=1.0) -> rank raw vector, shift ranked Alpha vector, apply distribution(gaussian, uniform, cauchy)<br>
 -> if uniform, subtract each Alpha value with mean of all Alpha values in the Alpha vector<br>
@@ -61,17 +61,17 @@
 6) truncate(x, maxPercent=0.01) -> truncates all values of x to maxPercent<br>
 7) winsorize(x, std=4) -> winsorizes x to make sure all values in x are between lower and upper limit (multiples of std)<br>
 8) zscore(x) -> (x-mean(x))/std(x) ; -> measures how unusual a data point is in relation to the mean<br>
-##Vectors
+## Vectors
 1) vec_avg(x) -> mean of vector field x<br>
 2) vec_count(x) -> number of elements in vector field x<br>
 3) vec_sum(x) -> sum of vector field x<br>
-##Transformational
+## Transformational
 1) bucket(rank(x),range=“0,1,0.1” or buckets=“2,5,6,7,10”) -> converts float values into indexes for user-specified buckets<br>
 2) left_tail(x, maximum=0) -> NaN everything greater than maximum<br>
 3) right_tail(x, minimum=0) -> NaN everything less than minimum<br>
 4) trade_when(x,y,z) -> change Alpha values only under a specified condition; <br>
 -> can close Alpha positions(assign NaN) under specified condition<br>
-##Group
+## Group
 1) group_backfill(x,group,d,std=4.0) -> if a certain value for a certain date and instrument is NaN, from the set of same group instruments, calculate winsorizeed mean of all non-NaN values over last d days<br>
 2) group_mean(x, weight, group) -> all elements in group equal mean<br>
 3) group_median( x, group) -> all elements in group equal to median value of group<br>
