@@ -1,4 +1,4 @@
-## Introduction to Portfolio Construction and Analysis with Python
+# Introduction to Portfolio Construction and Analysis with Python
 
 # Fundamentals of Returns
 Price Returns: (Pt+1 - Pt)/Pt
