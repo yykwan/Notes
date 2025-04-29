@@ -1,6 +1,6 @@
 ## Introduction to Portfolio Construction and Analysis with Python
 
-#Fundamentals of Returns
+# Fundamentals of Returns
 Price Returns: (Pt+1 - Pt)/Pt
 Total Returns: (Pt+1 + Dt,t+1 - Pt)/Pt
 Always use annualized returns for data reporting
