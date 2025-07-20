@@ -1,0 +1,349 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx, float}
+\usepackage{forest, textcomp, pgfplots, tikz}
+\usepackage{ marvosym }
+\graphicspath{{images/}}
+\pgfplotsset{compat=1.18}
+
+\title{Math2411 Applied Statistics}
+
+\begin{document}
+
+
+\section{Statistics Basic Framework}
+$\rightarrow$ population \\
+$\rightarrow$ sample \\
+$\rightarrow$ statistics \\
+$\rightarrow$ parameter \\
+Data = collection of observations of variables;
+
+\subsection{Types of Data}
+
+\begin{forest}
+for tree = drawn, rounded corners, align = center
+[Data Types
+[Categorical [Nominal] [Ordinal] ] [Numerical [Discrete] [Continuous]]]
+\end{forest}
+
+\subsection{Descriptive Statistics}
+$\rightarrow$ describe data using measures of central tendency or dispersion\\
+$\rightarrow$ provides a summary of the data.\\
+$\rightarrow$ identify patterns and trends\\
+\subsection{Inferential Statistics}
+$\rightarrow$ uses sample data to make inferences about a large population\\
+$\rightarrow$ test hypotheses about a statement and make decisions\\
+$\rightarrow$ address a scientific question\\
+\subsection{Frequency table}
+$\rightarrow$ graphical representation = histogram \\
+
+\section{Samples}
+\subsection{Sample mean}
+$\rightarrow$ center of data\\
+$\rightarrow$ \[\overline{x} = \frac{1}{n} \sum_{i=1}^{n} x_i\]
+\subsection{Sample variance}
+$\rightarrow$ dispersion or spread of data\\
+$\rightarrow$ \[
+s^2 \text{ or } s^2_{n-1} = \frac{1}{n} \sum_{i=1}^n (x_i -\overline{x})^2 \quad \]
+\subsection{Sample standard deviation}
+$\rightarrow$ \[s \text{ or } s_{n-1} = \sqrt{s^2_{n-1}}\]
+Proof: \\
+\[\sum_{i=1}^n (x_i - \overline{x})^2 = \sum_{i=1}^n (x^2_i - 2x_i\overline{x}^2 + \overline{x}^2) = \sum_{i=1}^n x^2_i - 2\sum_{i=1}^n x_i\overline{x} + \sum_{i+1}^n \overline{x}^2\]\\
+\[\sum_{i=1}^n x^2_i -2\overline{x}n\overline{x} + nx^2 = \sum_{i=1}^2 x^2_i - n\overline{x}^2\]
+Therefore, \[s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline{x})^2\]
+\subsection{Sample median}
+$\rightarrow$ if odd $\rightarrow$ median = $\frac{n+1}{2}$ \\
+$\rightarrow$ if even $\rightarrow$ median = average of $\frac{n}{2}$ and $\frac{n}{2} +1$ 
+\subsection{Quantiles}
+$\rightarrow$ also called $p=\frac{x}{100}$ quantile 
+\begin{align*}
+\rightarrow k = np + 0.5 \rightarrow &\text{if } k = \text{integer} \rightarrow \text{\(k\)-th data point is the data point} \\
+&\text{if } k \neq \text{integer} \rightarrow \text{quantile = average of k and k+1}
+\end{align*}
+Interquatile range (IQR) $ = Q_3 - Q_1$ 
+\subsection{Boxplot}
+$\rightarrow$ shows center, dispersion, typical range, outliers\\
+$\rightarrow$ potential outliers $=[Q_1 - 1.5\times IQR , Q_3 + 1.5\times IQR]$ \\
+$\rightarrow$ Steps:
+\begin{itemize}
+\item[1.]Sort Data
+\item[2.]Box: median, $Q_1, Q_3$, IQR
+\item[3.] Outliers and whiskers
+\end{itemize}
+
+\section{Events, Sets and Probability}
+\subsection{Random experiment/trial}
+$\rightarrow$ a procedure that generates an uncertain outcome.\\
+\subsection{Sample space $\Omega$}
+$\rightarrow$ set of all possible outcomes of an experiment \\
+\subsection{Event}
+$\rightarrow$ a set of outcomes \\
+\subsection{Operation rules of events/sets}
+\begin{itemize}
+\item[1.] Intersection $A \cap B$
+\item[2.] Union $A\cup B$
+\item[3.] Compliment $A^c$
+\item[4.] (set) difference $A-B = A \cap B^c$
+\item[5.] Symmetric Difference $A \triangle B = (A-B) \cup (B-A) = A \cup B - (A \cap B)$
+\end{itemize}
+\subsection{Useful Terms}
+\begin{itemize}
+\item[1.] Empty events $\emptyset$
+\item[2.] Disjoint events $A \cap B = \emptyset$
+\item[3.] Mutually exclusive $\rightarrow$ disjoint events $A \cap B = \emptyset$
+\item[4.] Exhaustive $\rightarrow$ if union of events $A_1, A_2, ..., A_k$ is $\Omega$
+\end{itemize}
+\subsection{Commutative Law}
+$\rightarrow A \cap B = B \cap A$\\
+$\rightarrow A \cup B = B \cup A$
+\subsection{Associative Law}
+$\rightarrow (A \cap B) \cap C = A \cap (B \cap C)$ \\
+$\rightarrow (A \cup B) \cup C = A \cup (B \cup C)$
+\subsection{Distributive Law}
+$\rightarrow (A \cup B) \cap C = (A \cap C) \cup (B \cap C)$ \\
+$\rightarrow (A \cap B ) \cup C = (A \cup C) \cap (B \cup C)$
+\subsection{De Morgan's Law}
+$\rightarrow (A \cap B)^c = A^c \cup B^c$ \\
+$\rightarrow (A \cup B)^c = A^c \cap B^c$
+\subsection{Proofing}
+\subsubsection{Proofing with Venn Diagram}
+\begin{itemize}
+    \item[1.] Draw Venn diagram
+    \item[2.] Mark number for each slice
+    \item[3.] Sub into equation
+\end{itemize}
+\subsubsection{Proofing with algebraic rules (example)}
+$A \triangle B = (A-B) \cup (B-A) = A \cup B - (A \cap B)$\\
+$A-B = A \cap B^c , B-A = B \cap A^c$ \\
+$(A-B) \cup (B-A) = (A \cap B^c) \cup (B \cap A^c) = [A \cup (B \cap A^c)] \cap [B^C \cup (B \cap A^c)] \\ = [A \cup B] \cap [B^c \cup A^c] = (A \cup B) \cap (A \cap B))^c = A \cup B - (A \cap B)$
+
+\subsection{Axioms of Probability}
+If satisfy: \\
+\begin{itemize}
+\item[1.] $ 0 \leq P(E) \leq 1$ \\
+\item[2.] $P(\Omega) =1$ \\
+\item[3.] if $E_1,E_2,...$ are mutually exclusive events $P(\cup_{i=1}^n E_i) - \sum_{i=1}^n P(E_i)$ \\
+\end{itemize}
+$\rightarrow$ Events in $\Omega \rightarrow R$ is a probability function (P) \\
+Probability Space: $(\Omega, A, P)$ \\
+\subsection{Probability Properties}
+$\rightarrow P(A^C) = 1-P(C)$\\
+$\rightarrow P(\emptyset)=0$\\
+$\rightarrow A \subset B, then P(A) \leq P(B)$\\
+$\rightarrow P(A \cup B) = P(A)+P(B)-P(A \cap B)$\\
+\subsection{Union Bound}
+$P(A \cup B) \leq P(A) +P(B)$ \\
+$P(A \cap B) \geq 1-P(A^c) - P(B^c) $ \\
+*$P(A \cup B) = P(A) + P(B) -P(A \cap B)$ \\
+Example: Prove $P(E)+P(F)-2P(E \cap F) = P(E \triangle F)$ \\
+$ E \triangle F = E \cup F - E\cap F$ \\
+$E \triangle F$ and $E \cap F$ is non-overlapping and union is $E \cup F$, so $P(E \cup F) = P(E \triangle F) + P(E \cap F)$ \\
+$P(E \cup F) = P(E) +P(F) -P(E \cap F)$ \\
+Therefore, $P(E \triangle F) = P(E) +P(F) -2P(E \cap F)$ \\
+\subsection{Sample space with equally likely outcomes}
+$\rightarrow |\Omega| \textless + \infty $\\
+$\rightarrow$ If $\Omega$ is a sample space with N number of outcomes, and for all outcomes $w_i,w_j,P(w_i) = P(w_j)$\\
+$\rightarrow P(w_i) = \frac{1}{N}, P(E) = \frac{|E|}{N}$
+\subsection{Combination Number}
+$\rightarrow$ choose k unique items from n items, regardless of the order \\
+$\rightarrow$\[ C(n,k) \quad \text{or} \quad \binom{n}{k} =\frac{n \times (n-1) \times ... \times (n-k+1)}{k \times (k-1) \times ... \times 1}\]
+\subsection{Conditional Probability}
+$\rightarrow$ Consider P(A), given the fact that another even B already occurs \\
+$\rightarrow P(B) \textgreater 0$, conditional probability of A given B \\
+$\rightarrow$\[ P(A|B) = \frac{P(A \cap B)}{P(B)}\] \\
+\subsection{Independence}
+$\rightarrow$ If $P(A \cap B) = P(A)P(B) \rightarrow$ event A,B are independent \\
+Proof: To show independence, consider $P(A \cap B^C)$\\
+$A \cap B $ and $A \cap B^c $ are non-overlapping and their union is $A \cap (B \cup B^c) =A$ 
+\begin{align*}
+P(A \cap B^c) &= P(A) - P(A \cap B) = P(A) - P(A)P(B) \\
+&= P(A)(1 - P(B)) = P(A)P(B^c)
+\end{align*}
+\subsection{Law of total probability}
+$\rightarrow$ For a partition $B_1, B_2,..,B_k$
+\[P(A) = P(B_1)P(A|B_1) +P(B_2)P(A|B_2) + ... +P(B_k)P(A|B_k)\]
+*partition = mutually exclusive and exhaustive events \\
+\subsection{Bayes' Theorem}
+$\rightarrow$ If $P(A) \textgreater 0, P(B) \textgreater 0$, then
+\[P(B|A) = P(A|B)\frac{P(B)}{P(A)} = \frac{P(A|B)P(B)}{P(A|B)P(B)+ P(A|B^c)P(B^c)}\]
+\newpage
+\section{Random Variable (rv)}
+= a function on sample space$\Omega$ that associate a real number $X(w)$ with each element in $\Omega$\\
+$\rightarrow$ after experiment $\rightarrow$ take particular value/realization X \\
+$\rightarrow$ event $X^{-1} = $ pre=image of function X \\
+\[P(a \textless X \leq b) = P(X^{-1}((a,b]))\]\\
+$\rightarrow P(Z \leq 1) = \frac{\text{area of lower triangle}}{\text{area of square}} = \frac{1}{2}$\\
+\subsection{Probability mass function}
+$\rightarrow$ range of a rv (same as the range of function $R_X$) = set of all its possible values \\
+$\rightarrow X = $ discrete random variable\\
+$\rightarrow$ when range of a rv consist of intervals on real line $\rightarrow$ continuous random variable \\
+$\rightarrow$ pmf: $p(x) = P(X =x)$, for each possible value $x\in R_x$\\
+\[\text{For all }x\in R_X , 0 \leq p(x) \leq 1 \text{ and } \sum_{x\in R_X} p(x) =1\] 
+$\rightarrow$ If satisfy above condition $\rightarrow$ discrete rv \\
+\subsection{Cumulative distribution function (cdf)}
+$\rightarrow R \rightarrow [0,1] \rightarrow F(x) = P(X \leq x)$\\
+$\rightarrow P(a \textless X \leq b) = F(b) -F(a)$\\
+\subsection{Properties of cdf}
+$\rightarrow$ non-decreasing, $F(-\infty) =0, F(+\infty)=1$\\
+$\rightarrow$ right-continuous: $\lim_{x \rightarrow a^+} = F(a)$
+\subsection{Population mean/ Expectation}
+$\rightarrow$ a discrete rv X is defined as: \\
+\[E(X) = \sum_{x \in R_X}x p(x) \]
+$\rightarrow$ mean usually denoted by $\mu_x, \mu, EX$\\
+$\quad \rightarrow $describes the center of the distribution of rv X\\
+Example: X is a discrete rv with range ={-1,0,1}. pmf of X is p(-1) = 0.4, p(0) = 0.2, p(1)=0.4. Find E(X) and E($X^2$)\\
+Method 1: Find pmf of $X^2$, range is {0,1}
+\begin{align*}
+P(X^2 =0) &= P(X=0) = 0.2\\
+P(X^2 =1) &= P(X=-1,X=1) -0.8\\
+E(X^2) &= 0 \times 0.2 + 1 \times 0.8 = 0.8\\
+\end{align*}
+Method 2:
+\begin{align*}
+    E(X^2) &= 0 \times 0.2 + 1 \times 0.8\\
+    &= 0 \times P(X=0) + 1 \times (P(X=-1)+P(X=1))\\
+    &= 0^2 \times P(X=0) + (-1)^2 \times P(X=-1) + (1)^2 \times P(X=1)\\
+\end{align*}
+$\rightarrow$ discrete rv X, continuous function g(x):\\
+\[E(g(X)) = \sum_{x\in R_X} g(x)p(x)\]\\
+\subsection{Properties of E(X)}
+$\rightarrow E(aX+b) = aE(X) + b$\\
+Proof:
+\[E(ax+b) = \sum_{x} (ax+b)p(x) = \sum_{x}(axp(x)+bp(x)) = a \sum_{x} xp(x) + b\sum_{x}p(x) = aE(X)+b\] \\
+\subsection{(Population) Variance}
+\[Var(X) = \sum_{x\in R_X} (x-\mu)^2p(x) = E((X-\mu)^2)\]
+*$\sum_{x\in R_X} x^2 p(x) \textless + \infty$ guarantees $\mu$ and Var(X) exists \\
+$\rightarrow$ Var(X) is usually denoted by $\sigma_X^2 , \sigma^2$
+$\rightarrow$ describe dispersion of the distribution of rv X\\
+$\rightarrow$ Population standard deviation $SD(X) = \sqrt{Var(X)}$\\
+\[Var(X) = E(X^2) - (E(X))^2\]
+Proof:
+\begin{align*}
+    E(X-\mu ) &= \sum_{x}(x-\mu )^2p(x) = \sum_{x} (x^2 -2\mu x + \mu^2)p(x) \\ &= \sum_{x} x^2 p(x) - \sum_{x}2\mu x p(x) + \sum_{x}\mu^2 p(x) \\ &= E(X^2) - 2\mu \times \mu + \mu ^2 \\ &= E(X^2) - (E(X))^2 
+\end{align*}
+\subsection{Properties of Var(X)}
+\[Var(aX+b) = a^2 Var(X)\]
+Proof: Denote $E(X) = \mu$,
+\begin{align*}
+    Var(aX+b) &= E[(aX+b - E(aX+b))^2] \\
+    &= E[(aX+b - a\mu -b )^2]\\
+    &= E(a^2(X-\mu)^2)\\
+    &= a^2 E((X-\mu))^2\\
+    &= a^2 Var(X)
+\end{align*}
+\subsection{Probability Density Function (pdf)}
+$\rightarrow f(x) \geq 0 , a \leq b$\\
+\[P(a \textless X \leq b) = \int_a^b f(x) dx\] if continuous = 1\\
+$\rightarrow$ cdf $F(a) = \int_{-\infty}^a f(x) dx $, for any point a where f(a) is continuous, F(a) is differentiable $\frac{dF(x)}{dx} |_{x=a} = f(a) $\\
+$P(X=a) = \int_a^a f(x)dx =0$ for any a \\
+Example:$f(x) = \begin{cases}
+    c(2x - x^2) & \text{if } 0 < x < 2, \\
+0 & \text{otherwise.}
+\end{cases}$ \\
+1. Find c \\
+\[1=\int_0^2 c(2x-x^2)dx = c[x^2 - \frac{x^3}{3}]_0^2 = \frac{4c}{3} \rightarrow c=\frac{3}{4}\] \\
+2. For any a and b in (0,2], calculate $P(a \leq X \leq b)$\\
+\[P(a \leq X \leq b) = \int_a^b \frac{3}{4} (2x-x^2)dx = \frac{1}{4} (3t^2-t^3) \text{ for } 0 \textless t \leq 2\] 
+\[F(t)=0, \text{ for } t \leq 0 \text{ and } F(t) =1 \text{ for } t \textgreater 2\]\\
+\newpage
+\subsection{Brief Summary}
+Discrete Random Variables:
+\begin{itemize}
+    \item [1.] Probability Mass Function p(x)\\
+    \[0 \leq p(x) \leq 1 \quad \sum_{x} p(x) =1\]\\
+    \item[2.] Cumulative Distribution Function \\
+    \[F(x) = \sum_{t\leq x} p(t) = P(X \leq x)\]\\
+    \item[3.] Expectation\\
+    \[E(X) = \sum_{x} xp(x)\]\\
+    \[E(g(X))=\sum_{x}g(x)p(x)\]\\
+    \item[4.] Variance\\
+    \[Var(X) = \sum_{x}(x-\mu x)^2p(x) = E(X-\mu x)^2\]
+\end{itemize}
+Continuous Random Variables:
+\begin{itemize}
+    \item [1.] Probability density function f(x)\\
+    \[f(x) \geq 0 \quad \int_{-\infty}^{+\infty} f(x) dx =1\]\\
+    * $\frac{d}{dx}cdf=pdf$
+    \item [2.] Cumulative distribution function \\
+    \[F(x)=\int_{-\infty}^x f(t)dt = P(X \leq x)\]
+    \item[3.] Expectation\\
+    \[E(X) = \int_{-\infty}^{\infty}xf(x)fx\]\\
+    \[E(g(X)) = \int_{-\infty}^{\infty}g(x)f(x)dx\]\\
+    \item[4.] Variance \\
+    \[Var(X) = \int_{-\infty}^{\infty}(x-\mu x)^2f(x)dx = E(X-\mu x)^2\]\\
+\end{itemize}
+Properties for both:
+\begin{itemize}
+    \item [1.] $E(aX+b) = aE(X)+b$
+    \item[2.] $Var(X) = E(X^2)-(E(X))^2$
+    \item[3.] $Var(aX+b) = a^2 Var(X)$
+\end{itemize}
+For discrete rvs X and Y:
+\[E(X+Y)=E(X)+E(Y)\]
+*Also ok for continuous rvs using joint pdf\\
+Proof with joint pmf:$p(x,y):= P({X =x} \cap {Y=y})$\\
+\subsection{Joint Distribution}
+$\rightarrow$ for 2 discrete rvs X, Y with range $R_X, R_Y$\\
+$\rightarrow$ joint pmf: $p(x,y) = P({X=x} \cap {Y=y}), x \in R_X, y \in R_Y$\\
+$\rightarrow 0 \leq p(x,y) \leq 1$ and $\sum_{x\in R_X, y \in R_Y} p(x,y)=1$\\
+$\rightarrow$ Marginal pmf / Marginalization:\\
+\[\sum_{y\in R_Y}p(x,y)=P_x(x),\sum_{x\in R_X}p(x,y)=P_Y(y)\]
+\subsection{Independence of random variables}
+$\rightarrow$ for discrete rvs X, Y, if for any $x \in R_X, y \in R_Y$
+\[p(x,y)=P_X(x)P_Y(y) \rightarrow independent\]
+$\rightarrow$ if independent and continuous,\\
+\[E(f(X)g(Y)) = E(f(X))E(g(Y))\]
+*$E(XY) = E(X)E(Y)$\\
+*$Var(X+Y) = Var(X) + Var(Y)$\\
+\subsection{Properties of E(X) and Var(X) with multiple rvs}
+$\rightarrow$ For any rvs,
+\begin{itemize}
+    \item [1.] $E(X+Y) = E(X) +E(Y)$
+    \item[2.] $E(X_1, X_2+...+E_n) = E(X_1) +E(X_2)+...+E(X_n)$
+\end{itemize}
+$\rightarrow$ For independent rvs,
+\begin{itemize}
+    \item [1.] $Var(X+Y)= Var(X) +Var(Y)$
+    \item [2.] $Var(X_1+X_2+...+X_n) = Var(X_1)+Var(X_2) +...+Var(X_n)$
+    \item[3.] $E(XY) = E(X) \times E(Y)$
+    \item [4.] $E(f(X)g(Y)) = E(f(X)) \times E(g(Y))$
+\end{itemize}
+\subsection{Binomial Distribution}
+$\rightarrow$ consider n(called size) repeated trials where for each trial the outcome is success/failure, denoted by 1 and 0\\
+$\rightarrow$ trials = identical, probability of success = p \\
+$\rightarrow$ trials = independent, $i \neq j$\\
+$\rightarrow$ number of successes in n trials X = binomial rv, denoted by $X\sim B(n,p)$\\
+* $\binom{n}{k} = \frac{n!}{k!(n-k)!} = \frac{n(n-1)..(n-k+1)}{k(k-1)...1}$\\
+Pmf of B(n,p)\\
+$\rightarrow x=0,1...,n , p(x)=P(X=x)$\\
+\[p(x) = P(X=x)=\binom{n}{x}p^x(1-p)^{n-x}\]
+Population mean of B(n,p): E(X) = np\\
+Population variance of B(n,p): Var(X) = np(1-p)\\
+Bernouli rv B(1,p) : outcome of a single 0,1 trial\\
+\subsection{Poisson Distribution}
+$\rightarrow$ for large n and small p\\
+$\rightarrow n \rightarrow \infty, p\rightarrow 0, np \rightarrow \lambda \rightarrow B(n,p) \rightarrow Pois(\lambda)$\\
+Pmf of Pois($\lambda)$:\\
+\[P(X=x)=e^{-\lambda}\frac{\lambda^x}{x!} \quad \text{, x=0,1,2,...}\]
+Population mean of Pois($\lambda$):E(X) = $\lambda$\\
+Population variance of Pois($\lambda)$: Var(X) = $\lambda$\\
+Method 1: use pmf \[E(X) = \sum_{k=0}^{\infty}ke^{-\lambda}\frac{\lambda^k}{k!} = \sum_{k=1}^{\infty}ke^{-\lambda}\frac{\lambda^k}{(k-1)!} = \lambda \sum_{k=1}^{\infty}ke^{-\lambda}\frac{\lambda^{k-1}}{(k-1)!} = \lambda \]
+Method 2: use binomial rv results \[\lim_{np \rightarrow \lambda}E(X) = \lim_{np \rightarrow \lambda}np =\lambda , \lim_{np \rightarrow \lambda}Var(X) = \lim_{np \rightarrow \lambda, p \rightarrow 0}np(1-p) = \lambda\]
+\subsection{Normal Distribution}
+pdf of $N(\mu, \sigma^2)$: \[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
+For $X \sim N(\mu,\sigma^2), E(X)=\mu, Var(X) = \sigma^2$
+\subsection{Standard Normal Distribution N(0,1)}
+$\rightarrow \text{cdf and } P(a \textless X \leq b) = \int_a^b f(x)dx$\\
+$\rightarrow$ if x is a normal rv, then for any $a\neq0$ and $b$, aX+b is also normally distributed\\
+\[E(z) = E(\frac{X-\mu}{\sigma}) = \frac{E(X)-\mu}{\sigma} = 0\]
+\[Var(Z) = Var(\frac{X-\mu}{\sigma}) = \frac{1}{\sigma^2}Var(X-\mu) = \frac{1}{\sigma^2}Var(X)=1\]
+\[P(a \textless X \leq b) = P(\frac{a-\mu}{\sigma} \textless Z \leq \frac{b-\mu}{\sigma}) = \Phi(\frac{b-\mu}{\sigma})- \Phi(\frac{a-\mu}{\sigma})\]
+$\rightarrow \Phi(x)=$cdf of a standard normal rv\\
+(Population) quantile function:\\
+$\rightarrow$= inverse of cdf\\
+$\rightarrow P(X \leq x) =q$
+
+\end{document}
+
+
