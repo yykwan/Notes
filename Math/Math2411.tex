@@ -353,8 +353,117 @@ $\rightarrow$ parameter $k \textgreater 0$\\
 $\rightarrow$ pdf is asymmetric and nonzero only on positive real numbers $R^+$\\
 $\rightarrow$ for integer k, $X = Z_1^2 +Z_2^2 +...+Z_k^2$, where $Z_i$ are iid standard normal rvs\\
 $\rightarrow$ E(X) = k\\
-
+\newpage
+\section{Estimation}
+\subsection{Estimator}
+$\rightarrow$ for the parameter $\theta$ , denoted by $\hat{\theta}$\\
+$\rightarrow$ $\hat{\theta}$ is an rv changing with data
+\subsection{Accuracy}
+$\rightarrow$ Bias $(\hat{\theta},\theta) = E(\hat{\theta})-\theta$\\
+$\rightarrow$ If Bias $(\hat{\theta},\theta) = 0$ for all $\theta$ values, $\hat{\theta}$ is unbiased\\
+$\rightarrow$ Consider the expectation/mean of $\hat{\theta}$
+\subsection{Precision}
+$\rightarrow$ it's variance $\rightarrow$ can compare unbiased estimators\\
+$\rightarrow$ precision = $\frac{1}{\sigma^2}$
+\subsection{Mean Square Error (MSE)}
+$\rightarrow$ combines both accuracy and precision\\
+$\rightarrow$ describe the overall error on average of estimator\\
+\[MSE(\hat{\theta},\theta)=E[(\hat{\theta}-\theta)^2]=[Bias(\hat{\theta},\theta)]^2+Var(\hat{\theta})\]
+\subsection{Unbiased Estimator}
+\begin{itemize}
+    \item [1.] Sample mean estimator (estimate $\mu$)\\
+    $\rightarrow$ for population mean $\mu_X = E(X)$\\
+    \[\text{sample's mean } \overline{x}=\frac{X_1+X_2+...+X_n}{n}\]\\
+    \[\text{sample's variance }Var(\overline{X)}=\frac{\sigma_X^2}{n}, \quad \sigma_X^2=Var(X)\]
+    $\rightarrow$ precision increases with the same sample size n\\
+    \item[2.] Sample variance estimator (estimate $\sigma^2$)\\
+    $\rightarrow E(s^2)=\sigma_X^2$\\
+    \[\text{sample variance }s^2=\frac{1}{n-1}\sum_{i=1}^n(X_i - \overline{X})^2 \]
+\end{itemize}
+\subsection{Maximum Likelihood Estimator (MLE)}
+$\rightarrow$ for parameter(s) $\theta$, defined as:\\
+\[\hat{\theta}_{\text{MLE}} = \arg \max_{\theta \in \Theta} \mathcal{L}(\theta; X_1, \dots, X_n)\]\\
+$\rightarrow For  X \sim B(m,p):\hat{p}=\frac{\overline{X}}{m}$\\
+$\rightarrow For  X \sim Pois(\lambda):\overline{\lambda}=\frac{1}{n}\sum_{i=1}^n X_i$\\
+$\rightarrow For X \sim N(\mu,\sigma^2):\hat{\mu}=\overline{X}, \quad \hat{\sigma^2}=\frac{1}{n}\sum_{i=1}^n (X_i-\overline{X})^2$
+\subsection{Interval Valued Estimation}
+$\rightarrow$ confidence level of an interval (c)\\
+\[C=P(\theta \in [\hat{\theta}-a,\hat{\theta}+b]) \text{ or } C=P(\hat{\theta}-a \leq \theta \leq \hat{\theta}+b) = P(\theta -b \leq \hat{\theta} \leq \theta+a)\]\\
+$\rightarrow$ for sample distribution:
+\begin{itemize}
+    \item [1.] Normal $X\sim N(\mu,\sigma^2) \rightarrow \overline{X}\sim N(\mu,\frac{\sigma^2}{n})$
+    \item[2.] Binomial $X\sim B(m,p) \rightarrow n\overline{X} \sim B(nm,p)$
+    \item[3.] Poisson $X\sim Pois(\lambda) \rightarrow n\overline{X}\sim Pois(n,\lambda)$
+\end{itemize}
+\subsection{Central Limit Theorem}
+$\rightarrow$ for an arbitrary distribution with mean E(X) and Var(X)\\
+\[ \lim_{n\rightarrow \infty} \frac{X-E(X)}{\sqrt{Var(X)/n}} \rightarrow N(0,1)\]
+$\rightarrow$ implies that for any random variable and large n, the distribution approaches normality\\
+$\rightarrow$ for simplicity, assume rv X is normally distributed\\
+\subsection{Interval estimator for $\mu$ / 95\% confidence interval (CI)}
+\[[\overline{X}-1.96\frac{\sigma}{\sqrt{n}},\overline{X}+1.96\frac{\sigma}{\sqrt{n}}]\]
+*satisfies: \[P(\mu \in [\overline{X}-1.96\frac{\sigma}{\sqrt{n}}, \overline{X}+1.96\frac{\sigma}{\sqrt{n}}])=C=0.95\]
+\subsection{Confidence Interval (when $\sigma$ is known}
+\[[\overline{X}-Z_\frac{\alpha}{2}\frac{\sigma}{\sqrt{n}},\overline{X}+Z_\frac{\alpha}{2}\frac{\sigma}{\sqrt{n}}]\]
+*critical value $\alpha = 1-c$ and $Z_\alpha = \phi^{-1}(1-\alpha)$
+\subsection{Confidence Interval (when $\sigma$ is unknown)}
+$\rightarrow \text{For }X\sim N(\mu,\sigma^2)$ with iid samples,\\
+$\frac{\overline{X-\mu}}{s/\sqrt{n}}\sim t_{n-1}$ holds where $t_v$ = student's t distribution with degrees of freedom equal to v\\
+\[[\overline{X}-t_{n-1,\frac{\alpha}{2}}\frac{s}{\sqrt{n}},\overline{X}+t_{n-1,\frac{\alpha}{2}}\frac{s}{\sqrt{n}}]\]
+\subsection{Confidence Interval for $s^2$}
+$\rightarrow \text{For }X\sim N(\mu, \sigma^2)$ with iid samples,\\
+$\frac{(n-1)s^2}{\sigma^2}\sim X_{n-1}^2$ holds, where $X_K^2$ is the chi-squared distribution with degrees of freedom equal to k
+\subsection{Confidence Interval for $\sigma^2$}
+$\rightarrow$ at confidence level $c=1-\alpha$\\
+\[[\frac{(n-1)s^2}{X_{n-1,\frac{\alpha}{2}}^2},\frac{(n-1)s^2}{X_{n-1,1- \frac{\alpha}{2}}^2}]\]
+\newpage
+\section{Hypothesis Testing}
+\begin{itemize}
+    \item [1.] Binary decisions/statements\\
+    $\rightarrow$ Null hypothesis $H_0$\\
+    $\rightarrow$ Alternative hypothesis $H_1$
+    \item[2.] Test statistic\\
+    $\rightarrow$ generally a function of the iid rvs of the samples
+    \item[3.] Decision rule\\
+    $\rightarrow$ Choose $H_1$: reject null hypothesis\\
+    $\rightarrow$ Choose $H_0$: cannot reject null hypothesis
+\end{itemize}
+\subsection{Error}
+$\rightarrow H_0$ true but reject $H_0 \rightarrow$ Type I error($\alpha$)\\
+$\rightarrow H_0$ false but did not reject $H_0 \rightarrow$ Type II error($\beta$)\\
+Methodology: Choose c such that Type I error probability $\alpha$ equals to a prespecified smaller number\\
+$\rightarrow \alpha$ also called significance level
+\subsection{Rejection Region}
+$\rightarrow X\sim N(\mu, \sigma^2)$, n iid samples $X_1,X_2,...X_n, \sigma^2$ is known\\
+$\begin{cases}
+    H_0:\mu = \mu_0 \quad \text{reject }H_0\text{ at a significant level }\alpha\\
+    H_1: \mu \textgreater \mu_0 \quad \text{if: } \overline{x} \textgreater \mu_0 + Z_{\alpha} \frac{\sigma}{\sqrt{n}}
+\end{cases}$
+\subsection{Testing $\mu$ when $\sigma^2$ is known}
+\begin{itemize}
+    \item [1.] One-sided greater test / Right test\\
+    $\begin{cases}
+        H_0:\mu =\mu_0 \quad \text{reject }H_0\text{ at }\alpha \text{ if } \overline{x}\textgreater \mu_0 + Z_{\alpha}\frac{\sigma}{\sqrt{n}}\\
+        H_1:\mu \textgreater \mu_0
+    \end{cases}$
+    \item[2.] One-sided less test / Left test\\
+    $\begin{cases}
+        H_0:\mu =\mu_0 \quad \text{reject }H_0\text{ at }\alpha \text{ if } \overline{x}\textless \mu_0 - Z_{\alpha}\frac{\sigma}{\sqrt{n}}\\
+        H_1:\mu \textless \mu_0
+    \end{cases}$
+    \item[3.] Two-sided test\\
+    $\begin{cases}
+        H_0:\mu =\mu_0 \quad \text{reject }H_0\text{ at }\alpha \text{ if } \overline{x}\textless \mu_0 - Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}} \text{ or }\overline{x}\textgreater \mu_0 + Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}\\
+        H_1:\mu \neq \mu_0
+    \end{cases}$
+    \item[4.] Simple test\\
+    $\begin{cases}
+        H_0: \mu=\mu_0 \text{ rejection same as one-sided test depending on relation between }H_0 \text{ and }H_1\\
+        H_1:\mu =\mu_1
+    \end{cases}$
+\end{itemize}
 
 \end{document}
+
 
 
