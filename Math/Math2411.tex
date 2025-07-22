@@ -342,12 +342,12 @@ $\rightarrow$ if x is a normal rv, then for any $a\neq0$ and $b$, aX+b is also n
 $\rightarrow \Phi(x)=$cdf of a standard normal rv\\
 (Population) quantile function:\\
 $\rightarrow$= inverse of cdf\\
-$\rightarrow P(X \leq x) =q$
+$\rightarrow P(X \leq x) =q$\\
 \subsection{Student's t distribution}
 $\rightarrow$ a family of distributions with a parameter $v \textgreater 0$\\
 $\rightarrow$ similar shape as the standard normal distribution N(0,1)\\
 $\rightarrow$ when v=1, $\rightarrow$ cauchy distribution\\
-$\rightarrow$ when v $\rightarrow +\infty \rightarrow$ standard normal N(0,1)\\
+$\rightarrow$ when v $\rightarrow +\infty \rightarrow$ standard normal N(0,1)
 \subsection{Chi-squared distribution}
 $\rightarrow$ parameter $k \textgreater 0$\\
 $\rightarrow$ pdf is asymmetric and nonzero only on positive real numbers $R^+$\\
@@ -462,8 +462,121 @@ $\begin{cases}
         H_1:\mu =\mu_1
     \end{cases}$
 \end{itemize}
-
+\subsection{Power}
+$\rightarrow$ power = $1-\beta$ (additional assumption of $\mu$ under $H_1$\\
+$\rightarrow$ increase with the difference of values of $\mu$ under $H_0$ and $H_1$ : $\triangle \mu = |\mu_1 - \mu_0|$\\
+$\rightarrow$ decrease with the value of $\sigma^2$ (given or assumed)\\
+$\rightarrow$ increase with the sample size n\\
+$\rightarrow$ General calculation, One-sided greater test($\mu_1 \textgreater \mu_0$)\\
+$\begin{cases}
+    H_0: \mu = \mu_0\\
+    H_1: \mu = \mu_1 \textgreater \mu_0
+\end{cases}$
+\[\text{Power}=P(Z \textgreater -\frac{\mu_1-\mu_0}{\sigma /\sqrt{n}}+Z_{\alpha}\]
+\subsection{Testing of $\mu$ when $\sigma^2$ is unknown}
+$\begin{cases}
+    H_0:\mu =\mu_0 \quad \text{ reject } H_0 \text{ at } \alpha \text{ if } \overline{X} \textgreater \mu_0 + Z_{\alpha} \frac{S_{n-1}}{\sqrt{n}}\\
+    H_1:\mu \textgreater \mu_0
+\end{cases}$\\
+Rejection Region: $\overline{X} \textgreater \mu_0 + t_{n-1,\alpha} \frac{S_{n-1}}{\sqrt{n}}$
+\subsection{T-test ($\sigma^2$ is unknown)}
+\begin{itemize}
+    \item [1.] One-sided greater test / Right test \\
+    $\begin{cases}
+        H_0: \mu=\mu_0\\
+        H_1: \mu_1 \textgreater \mu_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $\frac{\overline{X}-\mu_0}{S_{n-1}/\sqrt{n}} \textgreater t_{n-1,\alpha}$
+    \item[2.] One-sided less test / Left test\\
+    $\begin{cases}
+        H_0:\mu =\mu_0\\
+        H_1:\mu \textless \mu_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $|\frac{\overline{x}-\mu_0}{S_{n-1}/\sqrt{n}}| \textgreater t_{n-1, \frac{\alpha}{2}}$
+    \item[3.] Two-sided test\\
+    $\begin{cases}
+        H_0:\mu=\mu_0\\
+        H1:\mu \neq \mu_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $|\frac{\overline{x}-\mu_0}{S_{n-1}/\sqrt{n}}| \textgreater t_{n-1, \frac{\alpha}{2}}$
+\end{itemize}
+* t-statistic: \[T=\frac{\overline{X}-\mu_0}{\sqrt{S_{n-1}^2}/n}\]
+* z-statistic: \[Z=\frac{\overline{X}-\mu_0}{\sqrt{\sigma^2/n}}\]
+\subsection{p-value}
+$\rightarrow$ probability of obtaining a test result that is equal or more extreme than the actually observed result, under $H_0$ 
+\begin{itemize}
+    \item [1.] Test result: t-statistic / z-statistic
+    \item[2.] Actually observed result: test statistic value
+    \item[3.] $\begin{aligned}[t]
+        \text{More extreme:} & \text{ one-sided greater = t-value is larger} \\
+                             & \text{ two-sided test = |t-value| is larger}
+    \end{aligned}$
+    \item[4.] Probability under null:
+    \begin{itemize}
+        \item one-sided greater size: $P(T \geq t-value)=p-value$
+        \item two-sided test: $P(|T| \geq |t-value|)=2P(T \geq |t-value|) = p-value$
+    \end{itemize}
+    \item[5.] One-to-one correspondence between t-value and p-value
+    \item[6.] Using p-value for hypothesis testing : gives same result as rejection region method
+\end{itemize}
+\subsection{Power of t-test}
+$\rightarrow$ need to assume / be given the sd $\sigma$ to calculate\\
+$\rightarrow$ cannot be calculated by formulas\\
+$\rightarrow$ use R function power.t.test()\\
+$\rightarrow$ delta = difference in means in the direction consistent with the one-sided test, usually $delta \textgreater0$
+\subsection{Testing of population variance}
+\begin{itemize}
+    \item[1.] One-sided greater test / Right test
+    $\begin{cases}
+        H_0 :\sigma^2=\sigma^2_0\\
+        H_1: \sigma^2 \textgreater \sigma_0^2
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $S_{n-1}^2 \textgreater \sigma_0^2 \frac{X_{n-1,\alpha}^2}{n-1}$
+    \item[2.] One-sided less test / Left test
+    $\begin{cases}
+        H_0:\sigma^2 = \sigma^2_0\\
+        H_1: \sigma^2 \textless \sigma_0^2
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $S^2_{n-1} \textless \sigma^2_0 \frac{X^2_{n-1,1-\alpha}}{n-1}$
+    \item[3.] Two sided test
+    $\begin{cases}
+        H_0: \sigma^2 = \sigma^2_0\\
+        H_1: \sigma^2 \neq \sigma^2_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $S^2_{n-1} \textless \sigma^2_0 \frac{X^2_{n-1,1-\frac{\alpha}{2}}}{n-1}$ or $S^2_{n-1}\textgreater \sigma^2_0 \frac{X^2_{n-1,\frac{\alpha}{2}}}{n-1}$
+    \item[4.] Simple test
+    $\begin{cases}
+        H_0: \sigma^2 = \sigma^2_0\\
+        H_1: \sigma^2 = \sigma^2_1
+    \end{cases}$\\
+    * apply one-sided test method based on the relation between $\sigma^2_0, \sigma^2_1$
+\end{itemize}
+p-value:\\
+Method 1: \[p-value = P(U\textgreater \frac{(n-1)S^2_{n-1}}{\sigma^2_0})\]
+Method 2: \[p-value=2\times min[P(U\textgreater\frac{(n-1)S^2_{n-1}}{\sigma^2_0}),P(U\textless\frac{(n-1)S^2_{n-1}}{\sigma^2_0})]\]
+\subsection{Two-sided Test}
+\begin{itemize}
+    \item [1. ] T-test: $\sigma^2$ is unknown\\
+    $\begin{cases}
+        H_0:\mu = \mu_0\\
+        H_1:\mu \neq \mu_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $|\frac{\overline{x}-\mu_0}{S_{n-1}/\sqrt{n}}| \textgreater t_{n-1, \frac{\alpha}{2}}$
+    \item[2.] Z-test: $\sigma^2$ is known\\
+    $\begin{cases}
+        H_0:\mu = \mu_0\\
+        H_1: \mu \neq \mu_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $\overline{x} \textless \mu_0 -Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}$ or $\alpha$ if $\overline{x} \textgreater \mu_0 +Z_{\frac{\alpha}{2}}\frac{\sigma}{\sqrt{n}}$
+    \item[3.] Test for $\sigma^2$\\
+    $\begin{cases}
+        H_0: \sigma^2 = \sigma^2_0\\
+        H_1: \sigma^2 \neq \sigma^2_0
+    \end{cases}$\\
+    Reject $H_0$ at $\alpha$ if $S^2_{n-1} \textless \sigma^2_0 \frac{X^2_{n-1,1-\frac{\alpha}{2}}}{n-1}$ or $S^2_{n-1} \textgreater \sigma^2_{n-1} \textgreater \sigma^2_0 \frac{X^2_{n-1,\frac{\alpha}{2}}}{n-1}$
+\end{itemize}
+*For t-test and z-test, if set $C=1-\alpha \rightarrow$ rejection rule $=(\mu \notin CI)$\\
+*For $\sigma^2$ test, if set $C=1-\alpha \rightarrow$ rejection rule $=(\sigma^2_0 \notin CI)$
 \end{document}
-
 
 
