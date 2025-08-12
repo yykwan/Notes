@@ -1,0 +1,288 @@
+<!-- HTML Cheat Sheet -->
+1. HTML Document Structure
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Page Title</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+    </head>
+        <body>
+        <!-- Content goes here -->
+        </body>
+    </html>
+
+2. Basic Elements 
+    - Text Formatting 
+       <h1>Heading 1</h1>   <!-- Most important -->
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>   <!-- Least important -->
+
+        <p>This is a paragraph.</p>
+
+        <strong>Bold (semantic importance)</strong>
+        <b>Bold (visual only)</b>
+
+        <em>Italic (semantic emphasis)</em>
+        <i>Italic (visual only)</i>
+
+        <u>Underlined</u>
+        <s>Strikethrough</s>
+
+        <mark>Highlighted</mark>
+        <small>Small text</small>
+
+        <blockquote>Quoted text</blockquote>
+        <code>console.log()</code> <!-- Inline code -->
+        <pre>/* Multiline code */</pre> <!-- Preserves formatting --> 
+    - Lists
+        <!-- Unordered List -->
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+        </ul>
+
+        <!-- Ordered List -->
+        <ol>
+            <li>First</li>
+            <li>Second</li>
+        </ol>
+
+        <!-- Description List -->
+        <dl>
+            <dt>Term</dt>
+            <dd>Definition</dd>
+        </dl>
+
+3. Links & Navgation
+    <!-- External Link -->
+    <a href="https://example.com" target="_blank">Example</a>
+
+    <!-- Internal Link -->
+    <a href="#section-id">Jump to Section</a>
+
+    <!-- Email Link -->
+    <a href="mailto:contact@example.com">Email Us</a>
+
+    <!-- Telephone Link -->
+    <a href="tel:+1234567890">Call Us</a>
+
+    <!-- Anchor Point -->
+    <h2 id="section-id">Section Title</h2>
+
+4. Images & Media
+    <!-- Image -->
+    <img src="image.jpg" alt="Description" width="300" height="200">
+
+    <!-- Responsive Images -->
+    <picture>
+        <source media="(min-width: 800px)" srcset="large.jpg">
+        <source media="(min-width: 400px)" srcset="medium.jpg">
+        <img src="small.jpg" alt="Responsive image">
+    </picture>
+
+    <!-- Video -->
+    <video controls width="400">
+        <source src="video.mp4" type="video/mp4">
+        Your browser doesn't support HTML5 video.
+    </video>
+
+    <!-- Audio -->
+    <audio controls>
+        <source src="audio.mp3" type="audio/mpeg">
+        Your browser doesn't support HTML5 audio.
+    </audio>
+
+    <!-- Embed -->
+    <iframe src="https://example.com" title="Embedded Content"></iframe>
+
+5. Tables
+    <table>
+        <caption>Monthly Sales</caption>
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$1000</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+            <td>Total</td>
+            <td>$1000</td>
+            </tr>
+        </tfoot>
+    </table>
+
+6. Forms
+    - Basic Form Structure
+        <form action="/submit" method="POST">
+            <fieldset>
+                <legend>Personal Info</legend>
+                
+                <!-- Text Input -->
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required placeholder="John Doe">
+                
+                <!-- Email -->
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <!-- Password -->
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" minlength="8">
+                
+                <!-- Dropdown -->
+                <label for="country">Country:</label>
+                <select id="country" name="country">
+                    <option value="us">United States</option>
+                    <option value="ca">Canada</option>
+                </select>
+                
+                <!-- Radio Buttons -->
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                
+                <!-- Checkboxes -->
+                <input type="checkbox" id="subscribe" name="subscribe" checked>
+                <label for="subscribe">Subscribe to newsletter</label>
+                
+                <!-- Textarea -->
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                
+                <!-- File Upload -->
+                <label for="file">Upload File:</label>
+                <input type="file" id="file" name="file" accept=".pdf,.doc">
+                
+                <!-- Hidden Input -->
+                <input type="hidden" name="user_id" value="123">
+                
+                <!-- Buttons -->
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+                <button type="button" onclick="alert('Clicked!')">Regular Button</button>
+            </fieldset>
+        </form>
+    - HTML5 Input Types
+        <input type="color" name="favcolor">
+        <input type="date" name="birthday">
+        <input type="datetime-local" name="meeting">
+        <input type="number" name="quantity" min="1" max="10">
+        <input type="range" name="volume" min="0" max="100">
+        <input type="search" name="query">
+        <input type="tel" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+        <input type="time" name="appointment">
+        <input type="url" name="website">
+    
+7. Semantic HTML5 Elements
+    <header>Website Header</header>
+
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <article>
+            <h1>Article Title</h1>
+            <section>
+                <h2>Section 1</h2>
+                <p>Content...</p>
+            </section>
+        </article>
+    
+        <aside>Related content</aside>
+    </main>
+
+    <footer>Copyright © 2025</footer>
+
+8. Meta Tags & SEO 
+    <!-- Character Encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Viewport for Mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Page Description -->
+    <meta name="description" content="Free web tutorials">
+
+    <!-- Keywords (less important now) -->
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+
+    <!-- Author -->
+    <meta name="author" content="John Doe">
+
+    <!-- Open Graph (Social Media) -->
+    <meta property="og:title" content="Page Title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:image" content="image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+9. Accessibility (ARIA) 
+    <!-- Landmarks -->
+    <div role="navigation">...</div>
+    <div role="main">...</div>
+
+    <!-- Labels -->
+    <button aria-label="Close">X</button>
+
+    <!-- Dynamic Content -->
+    <div aria-live="polite">Updates will appear here</div>
+
+    <!-- Hidden Elements -->
+    <div aria-hidden="true">Not read by screen readers</div>
+
+10. HTML Entities
+    &amp;  <!-- Ampersand -->
+    &lt;   <!-- Less than -->
+    &gt;   <!-- Greater than -->
+    &quot; <!-- Double quote -->
+    &apos; <!-- Single quote -->
+    &nbsp; <!-- Non-breaking space -->
+    &copy; <!-- Copyright symbol -->
+    &reg; <!-- Registered trademark -->
+    &hearts; <!-- Heart symbol -->
+
+11. Embedding Content
+    <!-- YouTube Video -->
+    <iframe width="560" height="315" 
+        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+        frameborder="0" allowfullscreen>
+    </iframe>
+
+    <!-- Google Maps -->
+    <iframe src="https://maps.google.com/maps?q=New+York&output=embed">
+    </iframe>
+
+    <!-- SVG Graphic -->
+    <svg width="100" height="100">
+        <circle cx="50" cy="50" r="40" fill="red" />
+    </svg>
+
+    <!-- MathML (Mathematical Notation) -->
+    <math>
+        <mrow>
+            <msup><mi>a</mi><mn>2</mn></msup>
+            <mo>+</mo>
+            <msup><mi>b</mi><mn>2</mn></msup>
+        </mrow>
+    </math>
