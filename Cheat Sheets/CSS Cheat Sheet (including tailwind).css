@@ -1,0 +1,241 @@
+/* CSS Cheat Sheet (including tailwind) */
+1. CSS Basics
+    - Selectors 
+        /* Element Selector */
+        p { color: blue; }
+
+        /* Class Selector */
+        .text-red { color: red; }
+
+        /* ID Selector */
+        #header { background: black; }
+
+        /* Attribute Selector */
+        a[target="_blank"] { color: purple; }
+
+        /* Pseudo-classes */
+        a:hover { text-decoration: underline; }
+        li:nth-child(odd) { background: #f0f0f0; }
+
+        /* Pseudo-elements */
+        p::first-line { font-weight: bold; }
+        p::after { content: "⭐"; }
+    - Box Model 
+        .box {
+            width: 100px;
+            height: 100px;
+            padding: 20px;    /* Inner spacing */
+            border: 2px solid black;
+            margin: 10px;     /* Outer spacing */
+            box-sizing: border-box; /* Includes padding/border in width/height */
+            }
+    - Flexbox
+        .container {
+            display: flex;
+            justify-content: center; /* Horizontal alignment */
+            align-items: center;     /* Vertical alignment */
+            gap: 10px;              /* Spacing between items */
+            }
+
+            .item {
+            flex: 1; /* Grow/shrink equally */
+            }
+    - Grid 
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* 3 equal columns */
+            grid-gap: 10px;
+            }
+
+            .item {
+            grid-column: span 2; /* Span 2 columns */
+            }
+    - Positioning 
+        .relative-box { position: relative; }
+        .absolute-box { position: absolute; top: 0; left: 0; }
+        .fixed-box    { position: fixed; bottom: 0; right: 0; }
+        .sticky-box   { position: sticky; top: 0; }
+
+2. Responsive Design 
+    - Media Queries 
+        /* Mobile-first approach */
+        .container { padding: 10px; }
+
+        /* Tablet */
+        @media (min-width: 768px) {
+        .container { padding: 20px; }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+        .container { padding: 30px; }
+        }
+    - Viewport Units
+        .full-height {
+            height: 100vh; /* 100% of viewport height */
+            }
+            .full-width {
+            width: 100vw;  /* 100% of viewport width */
+            }
+    
+3. Animations & Transitions
+    /* Transition */
+    .button {
+    transition: all 0.3s ease;
+    }
+    .button:hover {
+    transform: scale(1.05);
+    }
+
+    /* Keyframe Animation */
+    @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+    }
+    .spinner {
+    animation: spin 2s linear infinite;
+    }
+
+4. Tailwind CSS (Utility-First Framework)
+    - Installation
+        npm install -D tailwindcss
+        npx tailwindcss init
+    - Basic Usage
+        <div class="p-4 bg-blue-500 text-white rounded-lg shadow-md">
+            Tailwind Styled Box
+            </div>
+    - Common Utility Classes
+        /* Spacing */
+        p-4 { padding: 1rem; }
+        m-2 { margin: 0.5rem; }
+
+        /* Colors */
+        bg-blue-500 { background-color: #3b82f6; }
+        text-white { color: #ffffff; }
+
+        /* Flexbox */
+        flex { display: flex; }
+        justify-center { justify-content: center; }
+        items-center { align-items: center; }
+
+        /* Grid */
+        grid { display: grid; }
+        grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+        /* Typography */
+        text-lg { font-size: 1.125rem; }
+        font-bold { font-weight: 700; }
+        text-center { text-align: center; }
+        
+        /* Sizing */
+        w-64 { width: 16rem; }
+        h-32 { height: 8rem; }
+        max-w-md { max-width: 28rem; }
+        max-h-screen { max-height: 100vh; }
+        min-w-full { min-width: 100%; }
+        min-h-screen { min-height: 100vh; }
+
+        /* Effects */
+        shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+        opacity-75 { opacity: 0.75; }
+        rounded-lg { border-radius: 0.5rem; }
+        border { border-width: 1px; }
+        border-gray-200 { border-color: #e5e7eb; }
+        overflow-hidden { overflow: hidden; }
+        overflow-x-auto { overflow-x: auto; }
+        overflow-y-scroll { overflow-y: scroll; }
+        cursor-pointer { cursor: pointer; }
+        pointer-events-none { pointer-events: none; }
+        transition duration-300 ease-in-out { transition: all 0.3s ease-in-out; }
+        transform { transform: translate3d(0, 0, 0); }
+        scale-105 { transform: scale(1.05); }
+        translate-x-4 { transform: translateX(1rem); }
+        rotate-45 { transform: rotate(45deg); }
+        skew-y-6 { transform: skewY(6deg); }
+        translate-y-2 { transform: translateY(0.5rem); }
+        translate-x-1 { transform: translateX(0.25rem); }
+        hover\:bg-blue-700:hover { background-color: #2563eb; }
+        focus\:outline-none:focus { outline: none; }
+    - Customizing Tailwind 
+        // tailwind.config.js
+        module.exports = {
+        theme: {
+            extend: {
+            colors: {
+                'brand-blue': '#1E40AF',
+            },
+            },
+        },
+        }
+    
+5. CSS Variables (Custom Properties)
+    :root {
+        --primary-color: #3B82F6;
+        --max-width: 1200px;
+        }
+
+        .container {
+        max-width: var(--max-width);
+        color: var(--primary-color);
+        }
+
+6. Best Practices
+    /* Use a CSS Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Base (mobile) styles first */
+    @media (min-width: 768px) { /* Tablet/desktop overrides */ }
+    /* BEM Naming Convention */
+    .card { }          /* Block */
+    .card__title { }   /* Element */
+    .card--active { }  /* Modifier */
+    /* Flex/Grid over Floats 
+    Use CSS variables for theming
+    Optimize with PurgeCSS (for Tailwind) */
+
+7. Advanced CSS Features
+    - CSS Grid Template Areas
+        .container {
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+        }
+        .header  { grid-area: header; }
+        .sidebar { grid-area: sidebar; }
+        .main    { grid-area: main; }
+        .footer  { grid-area: footer; }
+    - Clip Path (Custom Shapes) 
+        .circle {
+            clip-path: circle(50% at 50% 50%);
+        }
+        .triangle {
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+    - Dark Mode (CSS)
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1A1A1A;
+                color: white;
+            }
+        }
+    - Dark Mode (Tailwind) 
+        <div class="bg-white dark:bg-gray-800">
+            <p class="text-black dark:text-white">...</p>
+        </div>
+        /* Enable in tailwind.config.js */
+        module.exports = {
+            darkMode: 'class', // or 'media'
+        }
+
+8. CSS in JS (Styled Components)
+    // Using styled-components
+    import styled from 'styled-components';
+
+    const Button = styled.button`
+        background: ${props => props.primary ? 'blue' : 'gray'};
+        padding: 10px 20px;
+        border-radius: 4px;
+    `;
+
+    <Button primary>Click</Button>
